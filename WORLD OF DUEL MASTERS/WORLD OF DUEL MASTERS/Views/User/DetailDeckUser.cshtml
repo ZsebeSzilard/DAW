@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WORLD_OF_DUEL_MASTERS.Models.Card>
+
+@{
+    ViewData["Title"] = "ShowDeckUser";
+    Layout = "_UserLayout";
+}
+
+<h1>ShowDeckUser</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-left">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Civilization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Race)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Power)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-left">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (item.Civilization != "" && item.Civilization != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Civilization)
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Civilizations0)
+                    <a>&#47;<br /></a>
+                    @Html.DisplayFor(modelItem => item.Civilizations1)
+                }
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+
+            <td>
+                @if (item.Race != "" && item.Race != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Race)
+                }
+                else
+                {
+                    if (item.Races0 != "" && item.Races1 != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Races0)
+                        <a>&#47;<br /></a>
+                        @Html.DisplayFor(modelItem => item.Races1)
+                    }
+                    else
+                    {
+                        <a>-</a>
+                    }
+
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Power)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item.CardID">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

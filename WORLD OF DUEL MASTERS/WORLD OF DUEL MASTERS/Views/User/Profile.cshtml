@@ -1,0 +1,38 @@
+﻿@model WORLD_OF_DUEL_MASTERS.Models.Account
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "_UserLayout";
+}
+
+<h1 class="text-center">Your Profile</h1>
+<h2> @Html.DisplayFor(model => model.Username)</h2>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+
+
+
+    </dl>
+</div>
+
+<a asp-action="HomePage">Back to List</a>

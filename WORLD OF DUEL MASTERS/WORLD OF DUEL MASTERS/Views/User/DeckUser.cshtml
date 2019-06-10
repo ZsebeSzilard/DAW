@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WORLD_OF_DUEL_MASTERS.Models.Deck>
+
+@{
+    ViewData["Title"] = "YourDecks";
+    Layout = "_UserLayout";
+}
+<br />
+<h1 class="text-center">Your decks</h1>
+
+<p>
+    <a asp-area="" asp-controller="User" asp-action="CreateDeck">Create new deck</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                <a asp-action="EditDeckUser" asp-route-id="@item.DeckID">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
